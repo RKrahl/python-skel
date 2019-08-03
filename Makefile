@@ -14,7 +14,7 @@ clean:
 	rm -rf build
 
 distclean: clean
-	rm -f MANIFEST
+	rm -f MANIFEST .version
 	rm -f skel/__init__.py
 	rm -rf dist
 

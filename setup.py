@@ -11,6 +11,18 @@ try:
     import distutils_pytest
 except ImportError:
     pass
+try:
+    import setuptools_scm
+    version = setuptools_scm.get_version()
+    with open(".version", "wt") as f:
+        f.write(version)
+except ImportError:
+    try:
+        with open(".version", "rt") as f:
+            version = f.read()
+    except OSError:
+        distutils.log.warn("warning: cannot determine version number")
+        version = "UNKNOWN"
 
 doclines = __doc__.strip().split("\n")
 
@@ -61,7 +73,7 @@ class build_py(distutils.command.build_py.build_py):
 
 setup(
     name = "skel",
-    version = "0.0",
+    version = version,
     description = doclines[0],
     long_description = "\n".join(doclines[2:]),
     author = "Rolf Krahl",
