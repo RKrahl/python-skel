@@ -1,6 +1,6 @@
 /.env
 /.version
 /MANIFEST
-/skel/__init__.py
 /build/
 /dist/
+/$distname/__init__.py

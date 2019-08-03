@@ -1,5 +1,5 @@
 %bcond_with tests
-%global distname skel
+%global distname $distname
 
 Name:		python3-%{distname}
 Version:	$version

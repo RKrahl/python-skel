@@ -79,6 +79,7 @@ class sdist(distutils.command.sdist.sdist):
                 with Path(self.dist_dir, spec).open('wt') as outf:
                     outf.write(string.Template(inf.read()).substitute(subst))
 
+
 class build_py(distutils.command.build_py.build_py):
     def run(self):
         self.run_command('init_py')
@@ -86,16 +87,16 @@ class build_py(distutils.command.build_py.build_py):
 
 
 setup(
-    name = "skel",
+    name = "$distname",
     version = version,
     description = doclines[0],
     long_description = "\n".join(doclines[2:]),
     author = "Rolf Krahl",
     author_email = "rolf@rotkraut.de",
-    url = "https://github.com/RKrahl/python-skel",
+    url = "https://github.com/RKrahl",
     license = "Apache-2.0",
     requires = [],
-    packages = ["skel"],
+    packages = ["$distname"],
     classifiers = [
         "Development Status :: 1 - Planning",
         # "Intended Audience :: ?",
