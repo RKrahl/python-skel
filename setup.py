@@ -1,13 +1,62 @@
 """A skeleton for a Python package
 """
 
+import distutils.command.build_py
+import distutils.command.sdist
+import distutils.core
 from distutils.core import setup
+import distutils.log
+from pathlib import Path
 try:
     import distutils_pytest
 except ImportError:
     pass
 
 doclines = __doc__.strip().split("\n")
+
+
+class init_py(distutils.core.Command):
+
+    description = "generate the main __init__.py file"
+    user_options = []
+    init_template = '''"""%s"""
+
+__version__ = "%s"
+'''
+
+    def initialize_options(self):
+        self.package_dir = None
+
+    def finalize_options(self):
+        self.package_dir = {}
+        if self.distribution.package_dir:
+            for name, path in self.distribution.package_dir.items():
+                self.package_dir[name] = convert_path(path)
+
+    def run(self):
+        try:
+            pkgname = self.distribution.packages[0]
+        except IndexError:
+            distutils.log.warn("warning: no package defined")
+        else:
+            pkgdir = Path(self.package_dir.get(pkgname, pkgname))
+            ver = self.distribution.get_version()
+            if not pkgdir.is_dir():
+                pkgdir.mkdir()
+            with (pkgdir / "__init__.py").open("wt") as f:
+                print(self.init_template % (__doc__, ver), file=f)
+
+
+class sdist(distutils.command.sdist.sdist):
+    def run(self):
+        self.run_command('init_py')
+        super().run()
+
+
+class build_py(distutils.command.build_py.build_py):
+    def run(self):
+        self.run_command('init_py')
+        super().run()
 
 
 setup(
@@ -19,7 +68,7 @@ setup(
     author_email = "rolf@rotkraut.de",
     license = "Apache-2.0",
     requires = [],
-    packages = [],
+    packages = ["skel"],
     classifiers = [
         "Development Status :: 1 - Planning",
         # "Intended Audience :: ?",
@@ -32,5 +81,6 @@ setup(
         "Programming Language :: Python :: 3.7",
         # "Topic :: ?",
     ],
+    cmdclass = {'build_py': build_py, 'sdist': sdist, 'init_py': init_py},
 )
 

@@ -1,4 +1,5 @@
 /.env
 /MANIFEST
+/skel/__init__.py
 /build/
 /dist/
