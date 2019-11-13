@@ -21,7 +21,7 @@ try:
     version = setuptools_scm.get_version()
     with open(".version", "wt") as f:
         f.write(version)
-except ImportError:
+except (ImportError, LookupError):
     try:
         with open(".version", "rt") as f:
             version = f.read()
@@ -107,6 +107,7 @@ setup(
         "Programming Language :: Python :: 3.5",
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
         # "Topic :: ?",
     ],
     cmdclass = {'build_py': build_py, 'sdist': sdist, 'init_py': init_py},
