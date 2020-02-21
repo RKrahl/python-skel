@@ -5,8 +5,8 @@
 SPHINXOPTS    =
 SPHINXBUILD   = sphinx-build
 SPHINXPROJ    = python-skel
-SOURCEDIR     = source
-BUILDDIR      = build
+SOURCEDIR     = src
+BUILDDIR      = .
 
 # Put it first so that "make" without argument is like "make help".
 help:
