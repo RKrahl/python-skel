@@ -19,7 +19,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'python-skel'
+project = '$distname'
 copyright = '2020, Rolf Krahl'
 author = 'Rolf Krahl'
 
@@ -102,7 +102,7 @@ html_static_path = ['_static']
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'python-skeldoc'
+htmlhelp_basename = '%s-doc' % project
 
 
 # -- Options for LaTeX output ------------------------------------------------
@@ -129,7 +129,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'python-skel.tex', 'python-skel Documentation',
+    (master_doc, '%s.tex' % project, '%s Documentation' % project,
      'Rolf Krahl', 'manual'),
 ]
 
@@ -139,7 +139,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'python-skel', 'python-skel Documentation',
+    (master_doc, project, '%s Documentation' % project,
      [author], 1)
 ]
 
@@ -150,8 +150,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'python-skel', 'python-skel Documentation',
-     author, 'python-skel', 'One line description of project.',
+    (master_doc, project, '%s Documentation' % project,
+     author, project, 'One line description of project.',
      'Miscellaneous'),
 ]
 

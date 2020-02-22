@@ -1,6 +1,6 @@
 SPHINXOPTS    =
 SPHINXBUILD   = sphinx-build
-SPHINXPROJ    = python-skel
+SPHINXPROJ    = $distname
 SOURCEDIR     = src
 BUILDDIR      = .
 BUILDERS      = html dirhtml singlehtml htmlhelp qthelp devhelp epub	\

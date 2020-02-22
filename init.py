@@ -22,9 +22,12 @@ subprocess.check_call(["git", "tag", "-a", "-m", tagmsg, "0.0"])
 distname_files = (
     Path(".gitignore"),
     Path("Makefile"),
+    Path("doc/Makefile"),
+    Path("doc/src/conf.py"),
+    Path("doc/src/index.rst"),
     Path("python-skel.spec"),
     Path("setup.py"),
-    Path("tests", "test_00.py"),
+    Path("tests/test_00.py"),
 )
 
 for path in distname_files:
@@ -42,4 +45,6 @@ subprocess.check_call(["git", "commit", "-m", "Set the name of the package."])
 print("""Name of the package set.
 
 Next steps: fix the url in setup.py and adapt the description of the
-package in the doc string in setup.py and in the README.rst.""")
+package in the doc string in setup.py and in the README.rst.
+
+Also have a look into the documentation sources in doc/src""")

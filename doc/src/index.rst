@@ -1,5 +1,5 @@
-python-skel
-===========
+$distname
+=========
 
 .. toctree::
    :maxdepth: 2
