@@ -5,6 +5,7 @@ $distname
    :maxdepth: 2
    :caption: Contents:
 
+   changelog
 
 
 Indices and tables
