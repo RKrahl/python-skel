@@ -8,13 +8,10 @@
 
 # -- Path setup --------------------------------------------------------------
 
-# If extensions (or modules to document with autodoc) are in another directory,
-# add these directories to sys.path here. If the directory is relative to the
-# documentation root, use os.path.abspath to make it absolute, like shown here.
-#
-# import os
-# import sys
-# sys.path.insert(0, os.path.abspath('.'))
+from pathlib import Path
+import sys
+topdir = Path("../..").resolve()
+sys.path.insert(0, str(topdir))
 
 
 # -- Project information -----------------------------------------------------
@@ -23,10 +20,11 @@ project = '$distname'
 copyright = '2020, Rolf Krahl'
 author = 'Rolf Krahl'
 
-# The short X.Y version
-version = ''
 # The full version, including alpha/beta/rc tags
-release = ''
+with (topdir / ".version").open("rt") as f:
+    release = f.read()
+# The short X.Y version
+version = ".".join(release.split(".")[0:2])
 
 
 # -- General configuration ---------------------------------------------------
