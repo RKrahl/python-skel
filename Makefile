@@ -29,4 +29,4 @@ init_py:
 	$(PYTHON) setup.py init_py
 
 
-.PHONY: build test sdist clean distclean init_py
+.PHONY: build test sdist doc-html doc-pdf clean distclean init_py
