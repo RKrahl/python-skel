@@ -32,15 +32,13 @@ version = ".".join(release.split(".")[0:2])
 # ones.
 extensions = [
     'sphinx.ext.autodoc',
+    'sphinx.ext.intersphinx',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 
-# The suffix(es) of source filenames.
-# You can specify multiple suffix as a list of string:
-#
-# source_suffix = ['.rst', '.md']
+# The suffix of source filenames.
 source_suffix = '.rst'
 
 # The master toctree document.
@@ -66,6 +64,9 @@ pygments_style = 'sphinx'
 
 autodoc_member_order = 'bysource'
 
+# -- Options for intersphinx extension ---------------------------------------
+
+intersphinx_mapping = {'python': ('https://docs.python.org/3', None)}
 
 # -- Options for HTML output -------------------------------------------------
 
