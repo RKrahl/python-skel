@@ -43,13 +43,10 @@ Optional library packages:
 Copyright and License
 ---------------------
 
-Copyright 2019-2020 Rolf Krahl
+Copyright 2019–2020 Rolf Krahl
 
-Licensed under the Apache License, Version 2.0 (the "License"); you
-may not use this file except in compliance with the License.  You may
-obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
+Licensed under the `Apache License`_, Version 2.0 (the "License"); you
+may not use this file except in compliance with the License.
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
@@ -61,3 +58,4 @@ permissions and limitations under the License.
 .. _setuptools_scm: https://github.com/pypa/setuptools_scm/
 .. _pytest: https://pytest.org/
 .. _distutils-pytest: https://github.com/RKrahl/distutils-pytest
+.. _Apache License: https://www.apache.org/licenses/LICENSE-2.0
