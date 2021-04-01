@@ -11,6 +11,10 @@ argparser.add_argument("distname", help="name of the package")
 args = argparser.parse_args()
 
 
+tags = subprocess.check_output(["git", "tag"], universal_newlines=True)
+if tags:
+    subprocess.check_call(["git", "tag", "-d"] + tags.split())
+
 tagmsg = """Tag initial commit.  This is not a release version.
 
 Add this tag solely to make sure there is a tag somewhere in the
