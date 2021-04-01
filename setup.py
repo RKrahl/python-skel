@@ -4,9 +4,9 @@ This package itself does nothing useful.  It is a skeleton of a Python
 package that may be used as a starting point to create a new package.
 """
 
+import distutils.cmd
 import distutils.command.build_py
 import distutils.command.sdist
-import distutils.core
 from distutils.core import setup
 import distutils.log
 from glob import glob
@@ -32,7 +32,7 @@ except (ImportError, LookupError):
 doclines = __doc__.strip().split("\n")
 
 
-class init_py(distutils.core.Command):
+class init_py(distutils.cmd.Command):
 
     description = "generate the main __init__.py file"
     user_options = []
