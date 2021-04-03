@@ -24,6 +24,7 @@ distclean: clean
 	rm -f MANIFEST _meta.py
 	rm -f $distname/__init__.py
 	rm -rf dist
+	rm -rf tests/.pytest_cache
 	$(MAKE) -C doc distclean
 
 meta:
