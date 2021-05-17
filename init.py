@@ -31,6 +31,7 @@ distname_files = (
     Path("doc/src/index.rst"),
     Path("python-skel.spec"),
     Path("setup.py"),
+    Path("tests/conftest.py"),
     Path("tests/test_00.py"),
 )
 
