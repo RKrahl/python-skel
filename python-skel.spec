@@ -1,4 +1,4 @@
-%bcond_with tests
+%bcond_without tests
 %global distname $distname
 
 Name:		python3-%{distname}
@@ -42,6 +42,7 @@ python3 setup.py test
 %files
 %defattr(-,root,root)
 %doc README.rst CHANGES.rst
+%license LICENSE.txt
 %{python3_sitelib}/*
 
 
