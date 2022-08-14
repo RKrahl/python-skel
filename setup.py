@@ -4,18 +4,19 @@ This package itself does nothing useful.  It is a skeleton of a Python
 package that may be used as a starting point to create a new package.
 """
 
-import distutils.cmd
-import distutils.command.build_py
+import setuptools
+from setuptools import setup
+import setuptools.command.build_py
 import distutils.command.sdist
-from distutils.core import setup
-import distutils.log
+from distutils import log
 from glob import glob
 from pathlib import Path
 import string
 try:
     import distutils_pytest
-except ImportError:
-    pass
+    cmdclass = distutils_pytest.cmdclass
+except (ImportError, AttributeError):
+    cmdclass = dict()
 try:
     import setuptools_scm
     version = setuptools_scm.get_version()
@@ -24,13 +25,13 @@ except (ImportError, LookupError):
         import _meta
         version = _meta.__version__
     except ImportError:
-        distutils.log.warn("warning: cannot determine version number")
+        log.warn("warning: cannot determine version number")
         version = "UNKNOWN"
 
-doclines = __doc__.strip().split("\n")
+docstring = __doc__
 
 
-class meta(distutils.cmd.Command):
+class meta(setuptools.Command):
 
     description = "generate meta files"
     user_options = []
@@ -54,12 +55,12 @@ __version__ = "%(version)s"
     def run(self):
         values = {
             'version': self.distribution.get_version(),
-            'doc': __doc__
+            'doc': docstring
         }
         try:
             pkgname = self.distribution.packages[0]
         except IndexError:
-            distutils.log.warn("warning: no package defined")
+            log.warn("warning: no package defined")
         else:
             pkgdir = Path(self.package_dir.get(pkgname, pkgname))
             if not pkgdir.is_dir():
@@ -70,6 +71,9 @@ __version__ = "%(version)s"
             print(self.meta_template % values, file=f)
 
 
+# Note: Do not use setuptools for making the source distribution,
+# rather use the good old distutils instead.
+# Rationale: https://rhodesmill.org/brandon/2009/eby-magic/
 class sdist(distutils.command.sdist.sdist):
     def run(self):
         self.run_command('meta')
@@ -86,23 +90,24 @@ class sdist(distutils.command.sdist.sdist):
                     outf.write(string.Template(inf.read()).substitute(subst))
 
 
-class build_py(distutils.command.build_py.build_py):
+class build_py(setuptools.command.build_py.build_py):
     def run(self):
         self.run_command('meta')
         super().run()
 
 
+with Path("README.rst").open("rt", encoding="utf8") as f:
+    readme = f.read()
+
 setup(
     name = "$distname",
     version = version,
-    description = doclines[0],
-    long_description = "\n".join(doclines[2:]),
+    description = docstring.split("\n")[0],
+    long_description = readme,
+    url = "https://github.com/RKrahl",
     author = "Rolf Krahl",
     author_email = "rolf@rotkraut.de",
-    url = "https://github.com/RKrahl",
     license = "Apache-2.0",
-    requires = [],
-    packages = ["$distname"],
     classifiers = [
         "Development Status :: 1 - Planning",
         # "Intended Audience :: ?",
@@ -115,8 +120,13 @@ setup(
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
         # "Topic :: ?",
     ],
-    cmdclass = {'build_py': build_py, 'sdist': sdist, 'meta': meta},
+    packages = ["$distname"],
+    python_requires = ">=3.4",
+    install_requires = [],
+    cmdclass = dict(cmdclass, build_py=build_py, sdist=sdist, meta=meta),
 )
 
