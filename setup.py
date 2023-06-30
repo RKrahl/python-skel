@@ -53,9 +53,11 @@ __version__ = "%(version)s"
                 self.package_dir[name] = convert_path(path)
 
     def run(self):
+        version = self.distribution.get_version()
+        log.info("version: %s", version)
         values = {
-            'version': self.distribution.get_version(),
-            'doc': docstring
+            'version': version,
+            'doc': docstring,
         }
         try:
             pkgname = self.distribution.packages[0]
@@ -104,7 +106,8 @@ setup(
     version = version,
     description = docstring.split("\n")[0],
     long_description = readme,
-    url = "https://github.com/RKrahl",
+    long_description_content_type = "text/x-rst",
+    url = "https://github.com/RKrahl/$distname",
     author = "Rolf Krahl",
     author_email = "rolf@rotkraut.de",
     license = "Apache-2.0",
@@ -122,11 +125,16 @@ setup(
         "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3.10",
         "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
         # "Topic :: ?",
     ],
+    project_urls = dict(
+        #Documentation="https://$distname.readthedocs.io/",
+        Source="https://github.com/RKrahl/$distname",
+        #Changes="https://$distname.readthedocs.io/en/latest/changelog.html",
+    ),
     packages = ["$distname"],
     python_requires = ">=3.4",
     install_requires = [],
     cmdclass = dict(cmdclass, build_py=build_py, sdist=sdist, meta=meta),
 )
-
