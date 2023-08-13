@@ -117,8 +117,6 @@ setup(
         "License :: OSI Approved :: Apache Software License",
         "Operating System :: OS Independent",
         "Programming Language :: Python",
-        "Programming Language :: Python :: 3.4",
-        "Programming Language :: Python :: 3.5",
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
@@ -134,7 +132,7 @@ setup(
         #Changes="https://$distname.readthedocs.io/en/latest/changelog.html",
     ),
     packages = ["$distname"],
-    python_requires = ">=3.4",
+    python_requires = ">=3.6",
     install_requires = [],
     cmdclass = dict(cmdclass, build_py=build_py, sdist=sdist, meta=meta),
 )
