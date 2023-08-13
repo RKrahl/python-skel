@@ -12,7 +12,7 @@ import _meta
 # -- Project information -----------------------------------------------------
 
 project = '$distname'
-copyright = '2022, Rolf Krahl'
+copyright = '2023, Rolf Krahl'
 author = 'Rolf Krahl'
 
 # The full version, including alpha/beta/rc tags
