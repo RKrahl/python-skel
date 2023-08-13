@@ -45,7 +45,7 @@ for path in distname_files:
 subprocess.check_call(["git", "mv",
                        "python-skel.spec", "python-%s.spec" % args.distname])
 subprocess.check_call(["git", "rm", "init.py"])
-subprocess.check_call(["git", "commit", "-m", "Set the name of the package."])
+subprocess.check_call(["git", "commit", "-m", "Set the name of the package"])
 
 print("""Name of the package set.
 
