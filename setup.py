@@ -129,6 +129,7 @@ setup(
     project_urls = dict(
         #Documentation="https://$distname.readthedocs.io/",
         Source="https://github.com/RKrahl/$distname",
+        Download="https://github.com/RKrahl/$distname/releases/latest",
         #Changes="https://$distname.readthedocs.io/en/latest/changelog.html",
     ),
     packages = ["$distname"],
