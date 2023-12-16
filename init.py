@@ -15,13 +15,6 @@ tags = subprocess.check_output(["git", "tag"], universal_newlines=True)
 if tags:
     subprocess.check_call(["git", "tag", "-d"] + tags.split())
 
-tagmsg = """Tag initial commit.  This is not a release version.
-
-Add this tag solely to make sure there is a tag somewhere in the
-history that looks like a version number.
-"""
-subprocess.check_call(["git", "tag", "-a", "-m", tagmsg, "0.0"])
-
 
 distname_files = (
     Path(".gitignore"),
