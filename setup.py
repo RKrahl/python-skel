@@ -122,6 +122,6 @@ setup(
     packages = ["$distname"],
     package_dir = {"": "src"},
     python_requires = ">=3.6",
-    install_requires = [],
+    install_requires = ["setuptools"],
     cmdclass = dict(cmdclass, build_py=build_py, sdist=sdist, meta=meta),
 )
