@@ -18,8 +18,8 @@ try:
 except (ImportError, AttributeError):
     cmdclass = dict()
 try:
-    import setuptools_scm
-    version = setuptools_scm.get_version()
+    import gitprops
+    version = str(gitprops.get_version())
 except (ImportError, LookupError):
     try:
         from _meta import version
