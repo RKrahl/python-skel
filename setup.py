@@ -22,8 +22,7 @@ try:
     version = setuptools_scm.get_version()
 except (ImportError, LookupError):
     try:
-        import _meta
-        version = _meta.__version__
+        from _meta import version
     except ImportError:
         log.warn("warning: cannot determine version number")
         version = "UNKNOWN"
@@ -40,7 +39,7 @@ class meta(setuptools.Command):
 __version__ = "%(version)s"
 '''
     meta_template = '''
-__version__ = "%(version)s"
+version = "%(version)s"
 '''
 
     def initialize_options(self):
