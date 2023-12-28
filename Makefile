@@ -18,11 +18,10 @@ doc-pdf: meta
 
 clean:
 	rm -rf build
-	rm -rf __pycache__ $distname/__pycache__
+	rm -rf __pycache__
 
 distclean: clean
 	rm -f MANIFEST _meta.py
-	rm -f $distname/__init__.py
 	rm -rf dist
 	rm -rf tests/.pytest_cache
 	$(MAKE) -C doc distclean

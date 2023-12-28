@@ -4,4 +4,3 @@ __pycache__/
 /_meta.py
 /build/
 /dist/
-/$distname/__init__.py
