@@ -17,8 +17,6 @@ if tags:
 
 
 distname_files = (
-    Path(".gitignore"),
-    Path("Makefile"),
     Path("doc/Makefile"),
     Path("doc/src/conf.py"),
     Path("doc/src/index.rst"),
@@ -35,10 +33,15 @@ for path in distname_files:
         f.write(s.safe_substitute(distname=args.distname))
     subprocess.check_call(["git", "add", str(path)])
 
+Path("src/%s" % args.distname).mkdir()
 subprocess.check_call(["git", "mv",
                        "python-skel.spec", "python-%s.spec" % args.distname])
+subprocess.check_call(["git", "mv",
+                       "src/distname/__init__.py",
+                       "src/%s/__init__.py" % args.distname])
 subprocess.check_call(["git", "rm", "init.py"])
 subprocess.check_call(["git", "commit", "-m", "Set the name of the package"])
+Path("src/distname").rmdir()
 
 print("""Name of the package set.
 
