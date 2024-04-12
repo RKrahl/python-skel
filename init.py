@@ -25,20 +25,22 @@ distname_files = (
     Path("tests/conftest.py"),
     Path("tests/test_00.py"),
 )
+distname = args.distname
+pkgname = args.distname.replace('-', '_')
 
 for path in distname_files:
     with path.open("rt") as f:
         s = string.Template(f.read())
     with path.open("wt") as f:
-        f.write(s.safe_substitute(distname=args.distname))
+        f.write(s.safe_substitute(distname=distname, pkgname=pkgname))
     subprocess.check_call(["git", "add", str(path)])
 
-Path("src/%s" % args.distname).mkdir()
+Path("src/%s" % pkgname).mkdir()
 subprocess.check_call(["git", "mv",
-                       "python-skel.spec", "python-%s.spec" % args.distname])
+                       "python-skel.spec", "python-%s.spec" % distname])
 subprocess.check_call(["git", "mv",
                        "src/distname/__init__.py",
-                       "src/%s/__init__.py" % args.distname])
+                       "src/%s/__init__.py" % pkgname])
 subprocess.check_call(["git", "rm", "init.py"])
 subprocess.check_call(["git", "commit", "-m", "Set the name of the package"])
 Path("src/distname").rmdir()

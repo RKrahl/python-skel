@@ -119,7 +119,7 @@ setup(
         Download=("https://github.com/RKrahl/$distname/releases/%s/" % release),
         #Changes="https://$distname.readthedocs.io/en/latest/changelog.html",
     ),
-    packages = ["$distname"],
+    packages = ["$pkgname"],
     package_dir = {"": "src"},
     python_requires = ">=3.6",
     install_requires = ["setuptools"],

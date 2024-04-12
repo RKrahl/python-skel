@@ -14,7 +14,7 @@ buildlib = maindir / "build" / "lib"
 sys.path[0] = str(buildlib)
 sys.dont_write_bytecode = True
 
-import $distname._meta
+import $pkgname._meta
 
 # -- Project information -----------------------------------------------------
 
@@ -23,7 +23,7 @@ copyright = '2023, Rolf Krahl'
 author = 'Rolf Krahl'
 
 # The full version, including alpha/beta/rc tags
-release = $distname._meta.version
+release = $pkgname._meta.version
 # The short X.Y version
 version = ".".join(release.split(".")[0:2])
 
