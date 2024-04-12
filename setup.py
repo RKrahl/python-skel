@@ -19,7 +19,8 @@ except (ImportError, AttributeError):
     cmdclass = dict()
 try:
     import gitprops
-    release = str(gitprops.get_last_release())
+    release = gitprops.get_last_release()
+    release = release and str(release)
     version = str(gitprops.get_version())
 except (ImportError, LookupError):
     try:
@@ -36,8 +37,8 @@ class meta(setuptools.Command):
     description = "generate meta files"
     user_options = []
     meta_template = '''
-release = "%(release)s"
-version = "%(version)s"
+release = %(release)r
+version = %(version)r
 '''
 
     def initialize_options(self):
