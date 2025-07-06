@@ -10,7 +10,8 @@ import os
 from pathlib import Path
 import sys
 
-maindir = Path(__file__).resolve().parent.parent.parent
+docsrcdir = Path(__file__).resolve().parent
+maindir = docsrcdir.parent.parent
 buildlib = maindir / "build" / "lib"
 sys.path[0] = str(buildlib)
 sys.dont_write_bytecode = True
