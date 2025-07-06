@@ -21,7 +21,7 @@ import $pkgname._meta
 # -- Project information -----------------------------------------------------
 
 project = '$distname'
-copyright = '2023, Rolf Krahl'
+copyright = '2025, Rolf Krahl'
 author = 'Rolf Krahl'
 
 # The full version, including alpha/beta/rc tags
