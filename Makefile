@@ -10,11 +10,11 @@ test:
 sdist:
 	$(PYTHON) setup.py sdist
 
-doc-html: meta
-	$(MAKE) -C doc html PYTHONPATH=$(CURDIR)
+doc-html: build
+	$(MAKE) -C doc html
 
-doc-pdf: meta
-	$(MAKE) -C doc latexpdf PYTHONPATH=$(CURDIR)
+doc-pdf: build
+	$(MAKE) -C doc latexpdf
 
 clean:
 	rm -rf build
